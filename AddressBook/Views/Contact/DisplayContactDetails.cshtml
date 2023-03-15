@@ -1,0 +1,72 @@
+﻿@model AddressBook.Models.Contact;
+
+@{
+    Layout = "~/Views/Shared/AddressBookLayout.cshtml";
+}
+
+<div class="display-contact">
+    <div class='display-contact-header'>
+        <div class='contact-name'>
+            @Model.ContactName
+        </div>
+        <div class="changes">
+            <a href="/contact/editcontactform/@Model.ContactId">
+                <div class='edit' id=@Model.ContactId>
+                    <img class="edit-img" src='~/images/edit1.jpg' alt='' width='10px' height='14px'>
+                    <input type="button" value="Edit" class="edit-btn" id="edit-btn">
+                </div>
+            </a>
+            <a href="/contact/deleteexistingcontact/@Model.ContactId">
+                <div class='delete' id=@Model.ContactId>
+                    <img class="delete-img" src='~/images/delete1.png' alt='' width='12px' height='18px'>
+                    <input type="button" value="Delete" class="delete-btn" id="delete-btn">
+                </div>
+            </a> 
+        </div>
+    </div>
+    <div class='display-contact-email'>
+        <div class='display-label'>
+            Email:
+        </div>
+        <div class='display-value'>
+            &nbsp;@Model.ContactMail
+        </div>
+    </div>
+    <div class='display-contact-telephone'>
+        <div class='display-mobile'>
+            <div class='display-label'>
+                Mobile:
+            </div>
+            <div class='display-value'>
+                &nbsp;@Model.ContactMobile
+            </div>
+        </div>
+        <div class='display-landline'>
+            <div class='display-label'>
+                Landline:
+            </div>
+            <div class='display-value'>
+                &nbsp;@Model.ContactLandline
+            </div>
+        </div>
+    </div>
+    <div class='display-contact-website'>
+        <div class='display-label'>
+            Website:
+        </div>
+        <div class='display-value'>
+            &nbsp;@Model.ContactWebsite
+        </div>
+    </div>
+    <div class='display-contact-address'>
+        <div class='display-label'>
+            Address:
+        </div>
+        <div class='display-value'>
+            @Model.ContactAddress
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById(@Model.ContactId).style.backgroundColor = "#CEE7F2";
+</script>

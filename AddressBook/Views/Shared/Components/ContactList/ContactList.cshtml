@@ -1,0 +1,24 @@
+﻿@using AddressBook.Models;
+@{
+    List<Contact> Contacts = ViewData["ContactsList"] as List<Contact>;
+}
+
+<div class="page-contacts" style="display:block">
+    <div class='contacts-header'>
+        Contacts
+    </div>
+    <div class='contacts-list' id='contacts-list'>
+        @foreach (var contact in Contacts)
+        {
+            <a href="/Contact/displaycontactdetails/@contact.ContactId">
+                <div class="contact-item" id="contact-item">
+                    <div class='contact' id="@contact.ContactId">
+                        <div class='contact-name'>@contact.ContactName</div>
+                        <div class='contact-email'>@contact.ContactMail</div>
+                        <div class='contact-mobile'>@contact.ContactMobile</div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@model AddressBook.ViewModels.ContactView;
+
+@{
+    Layout = "~/Views/Shared/AddressBookLayout.cshtml";
+    var FormButton = "Add";
+}
+
+<div class="model-container" id="model-container">
+    <form id='add-contact' class='add-contact' action="/contact/contactform" method="post">
+        <a href="/contact/index"><div class="close">&times;</div></a>
+        @if(@Model != null && @Model.ContactId!=0)
+        {
+            FormButton = "Update";
+            @Html.TextBoxFor(contact => contact.ContactId,new {type="hidden"})
+        }
+        else
+        {
+            FormButton = "Add";
+        }
+        <div id='contact-name' class='contact-name'>
+            <div class='label-mandatory'>
+                @Html.LabelFor(contact => contact.ContactName,"Name",new {@class = "label"})
+                @Html.ValidationMessageFor(contact => contact.ContactName,"",new {@class = "name-input-mandatory"})
+            </div>
+            @Html.TextBoxFor(contact => contact.ContactName,"",new {@class = "name-input"})
+        </div>
+        <div class='contact-email'>
+            <div class='label-mandatory'>
+                @Html.LabelFor(contact => contact.ContactMail,"Email",new {@class = "label"})
+                @Html.ValidationMessageFor(contact => contact.ContactMail,"",new {@class = "email-input-mandatory"})
+            </div>
+            @Html.TextBoxFor(contact => contact.ContactMail,"",new {@class = "email-input"})
+            </div>
+        <div class='contact-telephone'>
+            <div class='mobile' id='mobile'>
+                <div class='label-mandatory'>
+                    @Html.LabelFor(contact => contact.ContactMobile,"Mobile",new {@class = "label"})
+                    @Html.ValidationMessageFor(contact => contact.ContactMobile,"",new {@class = "mobile-input-mandatory"})
+                </div>
+                @Html.TextBoxFor(contact => contact.ContactMobile,"",new {@class = "mobile-input"})
+            </div>
+            <div class='landline' id='landline'>
+                @Html.LabelFor(contact => contact.ContactLandline,"Landline",new {@class = "label"})
+                @Html.TextBoxFor(contact => contact.ContactLandline,"",new {@class = "landline-input"})
+            </div>
+        </div>
+        <div class='webiste'>
+            @Html.LabelFor(contact => contact.ContactWebsite,"Website",new {@class = "label"})
+            @Html.TextBoxFor(contact => contact.ContactWebsite,"",new {@class = "website-input"})
+        </div>
+        <div class='Address'>
+            <div class="Address-Dno">
+                @Html.LabelFor(contact => contact.ContactDoorNumber,"Door Number",new {@class = "label"})
+                @Html.TextBoxFor(contact => contact.ContactDoorNumber,"",new {@class = "address-input"})
+            </div>
+            <div class="Address-Dno">
+                @Html.LabelFor(contact => contact.ContactStreet,"Street",new {@class = "label"})
+                @Html.TextBoxFor(contact => contact.ContactStreet,"",new {@class = "address-input"})
+            </div>
+            <div class="Address-Dno">
+                @Html.LabelFor(contact => contact.ContactCity,"City",new {@class = "label"})
+                @Html.TextBoxFor(contact => contact.ContactCity,"",new {@class = "address-input"})
+            </div>
+        </div>
+        <input type='submit' value=@FormButton id='add-contact-btn' class='add-contact-btn'/>
+    </form>
+</div>
