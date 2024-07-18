@@ -1,7 +1,7 @@
 ﻿using Dapper.Contrib.Extensions;
 using System.ComponentModel.DataAnnotations;
 using KeyAttribute = Dapper.Contrib.Extensions.KeyAttribute;
-
+//class 
 namespace AddressBook.Models
 {
     [Table("AddressBook")]
